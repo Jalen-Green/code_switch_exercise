@@ -13,23 +13,23 @@ export default class Card extends React.Component {
   componentDidMount() {
     let but = document.getElementById("usersbutton");
     but.addEventListener("click", () => {
-        this.setState({ showBack: false });
-        document.getElementById(this.props.id).style.width = "fit-content";
+      this.setState({ showBack: false });
+      document.getElementById(this.props.id).style.width = "fit-content";
     });
   }
 
   render() {
     let disp = this.state.showBack
-      ? { display: "block", paddingBottom: "10px" }
-      : { display: "none" };
+      ? { opacity: 1, paddingBottom: "10px", height: "136px" }
+      : { opacity: 0, height: "0" };
 
     return (
       <button
         className="cardbutton"
         onClick={() => {
-          console.log(this.props.id);
           let card = document.getElementById(this.props.id);
-          card.style.width = !this.state.showBack ? "275px" : "fit-content";
+          card.style.width = !this.state.showBack ? "275px" : "206px";
+          card.style.height = !this.state.showBack ? "418px" : "272px";
           this.setState({ showBack: !this.state.showBack });
         }}
       >
@@ -41,18 +41,18 @@ export default class Card extends React.Component {
           </div>
           <br />
           <div className="back" style={disp}>
-            <div style={{ textDecoration: "underline", fontWeight: "bold" }}>
-              Email:{" "}
+            <div style={{ textDecoration: "underline", fontWeight: "bold", height: this.state.showBack ? "unset" : "0px"}}>
+              Email:
             </div>
-            {this.props.email}
-            <div style={{ textDecoration: "underline", fontWeight: "bold" }}>
-              Gender:{" "}
+            <div style= {{height: this.state.showBack ? "unset" : "0px"}}>{this.props.email}</div>
+            <div style={{ textDecoration: "underline", fontWeight: "bold", height: this.state.showBack ? "unset" : "0px"}}>
+              Gender:
             </div>
-            {this.props.gender}
-            <div style={{ textDecoration: "underline", fontWeight: "bold" }}>
+            <div style= {{height: this.state.showBack ? "unset" : "0px"}}>{this.props.gender}</div>
+            <div style={{ textDecoration: "underline", fontWeight: "bold", height: this.state.showBack ? "unset" : "0px"}}>
               Phone Number:
             </div>
-            {this.props.phone}
+            <div style= {{height: this.state.showBack ? "unset" : "0px"}}>{this.props.phone}</div>
             <br />
           </div>
         </div>
